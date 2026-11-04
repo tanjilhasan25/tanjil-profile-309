@@ -8,101 +8,91 @@ import {
     updateDoc 
 } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
-const itemsCollection = collection(db, "portfolio_items");
+const itemsCollection = collection(db, "portfolio_db");
+let allData = [];
 
-let localData = [];
-
-// 1. READ (Real-time listener from Firebase)
+// 1. READ Data real-time from Firebase
 onSnapshot(itemsCollection, (snapshot) => {
-    localData = [];
+    allData = [];
     snapshot.forEach((docItem) => {
-        localData.push({ id: docItem.id, ...docItem.data() });
+        allData.push({ id: docItem.id, ...docItem.data() });
     });
-    renderTable(localData);
+    renderTables(allData);
 });
 
-// 2. RENDER TABLE & SEARCH
-function renderTable(dataArray) {
-    const tableBody = document.getElementById("crudTableBody");
-    tableBody.innerHTML = "";
+// 2. Render tables for Education, Skills, and Projects
+function renderTables(data) {
+    const eduBody = document.getElementById("educationTable");
+    const skillBody = document.getElementById("skillsTable");
+    const projBody = document.getElementById("projectsTable");
 
-    if (dataArray.length === 0) {
-        tableBody.innerHTML = `<tr><td colspan="4" class="p-4 text-center text-slate-500">No data found in Firebase database.</td></tr>`;
-        return;
-    }
+    eduBody.innerHTML = "";
+    skillBody.innerHTML = "";
+    projBody.innerHTML = "";
 
-    dataArray.forEach(item => {
+    data.forEach(item => {
         const row = document.createElement("tr");
-        row.className = "hover:bg-slate-800/50 transition";
+        row.className = "hover:bg-slate-900/60 transition";
         row.innerHTML = `
-            <td class="p-3 font-mono text-neonCyan uppercase">${item.category}</td>
             <td class="p-3 font-semibold text-white">${item.title}</td>
-            <td class="p-3 text-slate-400">${item.detail}</td>
+            <td class="p-3 text-slate-400">${item.description}</td>
             <td class="p-3 text-right space-x-2">
-                <button onclick="window.editItem('${item.id}', '${item.category}', '${item.title}', '${item.detail}')" class="px-2 py-1 bg-amber-500/20 text-amber-300 rounded hover:bg-amber-500/40">Edit</button>
+                <button onclick="window.editItem('${item.id}', '${item.category}', '${item.title}', '${item.description}')" class="px-2 py-1 bg-amber-500/20 text-amber-300 rounded hover:bg-amber-500/40">Edit</button>
                 <button onclick="window.deleteItem('${item.id}')" class="px-2 py-1 bg-red-500/20 text-red-400 rounded hover:bg-red-500/40">Delete</button>
             </td>
         `;
-        tableBody.appendChild(row);
+
+        if (item.category === 'education') eduBody.appendChild(row);
+        else if (item.category === 'skills') skillBody.appendChild(row);
+        else if (item.category === 'projects') projBody.appendChild(row);
     });
 }
 
-// 3. CREATE & UPDATE (Form Handler)
+// 3. Modal Controls for CREATE / UPDATE
+window.openModal = (category, id = '', title = '', desc = '') => {
+    document.getElementById("crudModal").classList.remove("hidden");
+    document.getElementById("modalCategory").value = category;
+    document.getElementById("modalEditId").value = id;
+    document.getElementById("modalTitleInput").value = title;
+    document.getElementById("modalDescInput").value = desc;
+    document.getElementById("modalTitle").innerText = id ? `Edit ${category}` : `Add New ${category}`;
+};
+
+window.closeModal = () => {
+    document.getElementById("crudModal").classList.add("hidden");
+    document.getElementById("crudForm").reset();
+};
+
+// Form Submit (Create or Update)
 document.getElementById("crudForm").addEventListener("submit", async (e) => {
     e.preventDefault();
-    
-    const editId = document.getElementById("editId").value;
-    const category = document.getElementById("categoryInput").value;
-    const title = document.getElementById("titleInput").value.trim();
-    const detail = document.getElementById("detailInput").value.trim();
+    const category = document.getElementById("modalCategory").value;
+    const id = document.getElementById("modalEditId").value;
+    const title = document.getElementById("modalTitleInput").value.trim();
+    const description = document.getElementById("modalDescInput").value.trim();
 
-    if (editId) {
-        // UPDATE Operation
-        const itemRef = doc(db, "portfolio_items", editId);
-        await updateDoc(itemRef, { category, title, detail });
-        resetForm();
+    if (id) {
+        await updateDoc(doc(db, "portfolio_db", id), { category, title, description });
     } else {
-        // CREATE Operation
-        await addDoc(itemsCollection, { category, title, detail, createdAt: Date.now() });
-        resetForm();
+        await addDoc(itemsCollection, { category, title, description, createdAt: Date.now() });
     }
+    closeModal();
 });
 
 // 4. DELETE
 window.deleteItem = async (id) => {
-    if (confirm("Are you sure you want to delete this entry from Firebase?")) {
-        await deleteDoc(doc(db, "portfolio_items", id));
+    if (confirm("Are you sure you want to delete this record from Firebase?")) {
+        await deleteDoc(doc(db, "portfolio_db", id));
     }
 };
 
-// 5. START EDIT MODE
-window.editItem = (id, category, title, detail) => {
-    document.getElementById("editId").value = id;
-    document.getElementById("categoryInput").value = category;
-    document.getElementById("titleInput").value = title;
-    document.getElementById("detailInput").value = detail;
-    
-    document.getElementById("submitBtn").innerHTML = `<i data-lucide="check" class="w-4 h-4"></i> Save Edit`;
-    document.getElementById("cancelEditBtn").classList.remove("hidden");
-};
-
-// RESET FORM
-function resetForm() {
-    document.getElementById("editId").value = "";
-    document.getElementById("crudForm").reset();
-    document.getElementById("submitBtn").innerHTML = `<i data-lucide="plus-circle" class="w-4 h-4"></i> Add Entry`;
-    document.getElementById("cancelEditBtn").classList.add("hidden");
-}
-
-document.getElementById("cancelEditBtn").addEventListener("click", resetForm);
-
-// 6. SEARCH FILTER
-document.getElementById("searchInput").addEventListener("input", (e) => {
+// 5. Global Search Filter
+document.getElementById("globalSearch").addEventListener("input", (e) => {
     const query = e.target.value.toLowerCase();
-    const filtered = localData.filter(item => 
+    const filtered = allData.filter(item => 
         item.title.toLowerCase().includes(query) || 
-        item.detail.toLowerCase().includes(query) ||
+        item.description.toLowerCase().includes(query) ||
         item.category.toLowerCase().includes(query)
     );
-    renderTable(filtered);
+    renderTables(filtered);
 });
