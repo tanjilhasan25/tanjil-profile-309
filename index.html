@@ -1,11 +1,10 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Md. Tanjil Hasan Bappy · Futuristic Portfolio</title>
+    <title>Md. Tanjil Hasan Bappy · CSE Portfolio</title>
     
-    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -22,28 +21,24 @@
         }
     </script>
     
-    <!-- Google Fonts & Lucide Icons -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
 
     <style>
         body { font-family: 'Plus Jakarta Sans', sans-serif; }
         
-        /* Cute Pet Animation */
         @keyframes petJump {
             0%, 100% { transform: translateY(0) scale(1); }
-            50% { transform: translateY(-12px) scale(1.05); }
+            50% { transform: translateY(-10px) scale(1.05); }
         }
         .pet-bounce { animation: petJump 1.8s infinite ease-in-out; }
 
-        /* Blinking / Glowing Highlight for Current Work */
         @keyframes blinkGlow {
             0%, 100% { box-shadow: 0 0 10px rgba(0, 242, 254, 0.4); border-color: #00f2fe; }
             50% { box-shadow: 0 0 25px rgba(157, 78, 221, 0.8); border-color: #9d4edd; }
         }
         .blinking-banner { animation: blinkGlow 2s infinite ease-in-out; }
 
-        /* Traffic sign floating */
         @keyframes signFloat {
             0%, 100% { transform: rotate(-3deg); }
             50% { transform: rotate(3deg); }
@@ -53,185 +48,204 @@
 </head>
 <body class="bg-cyberDark text-slate-100 min-h-screen selection:bg-neonCyan selection:text-black">
 
-    <!-- Top Navigation / Header -->
+    <!-- Header Navigation -->
     <header class="sticky top-0 z-50 bg-cyberDark/90 backdrop-blur-md border-b border-slate-800">
         <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-            <a href="#dashboard" class="text-lg font-extrabold bg-gradient-to-r from-neonCyan to-neonPurple bg-clip-text text-transparent">
+            <button onclick="switchTab('dashboard')" class="text-lg font-extrabold bg-gradient-to-r from-neonCyan to-neonPurple bg-clip-text text-transparent">
                 TANJIL.BAPPY
-            </a>
-            <nav class="hidden md:flex gap-6 text-sm font-medium text-slate-300">
-                <a href="#dashboard" class="hover:text-neonCyan transition">Dashboard</a>
-                <a href="#myself" class="hover:text-neonCyan transition">MySelf</a>
-                <a href="#education" class="hover:text-neonCyan transition">Education</a>
-                <a href="#skills" class="hover:text-neonCyan transition">Skills</a>
-                <a href="#projects" class="hover:text-neonCyan transition">Projects</a>
-                <a href="#contact" class="hover:text-neonCyan transition">Contact</a>
+            </button>
+
+            <!-- Page Tabs -->
+            <nav class="flex gap-2 sm:gap-4 text-xs sm:text-sm font-medium">
+                <button onclick="switchTab('dashboard')" id="nav-dashboard" class="nav-btn px-3 py-1.5 rounded-lg text-neonCyan bg-slate-800">Dashboard</button>
+                <button onclick="switchTab('myself')" id="nav-myself" class="nav-btn px-3 py-1.5 rounded-lg text-slate-400 hover:text-white">MySelf</button>
+                <button onclick="switchTab('education')" id="nav-education" class="nav-btn px-3 py-1.5 rounded-lg text-slate-400 hover:text-white">Education</button>
+                <button onclick="switchTab('skills')" id="nav-skills" class="nav-btn px-3 py-1.5 rounded-lg text-slate-400 hover:text-white">Skills</button>
+                <button onclick="switchTab('projects')" id="nav-projects" class="nav-btn px-3 py-1.5 rounded-lg text-slate-400 hover:text-white">Projects</button>
+                <button onclick="switchTab('contact')" id="nav-contact" class="nav-btn px-3 py-1.5 rounded-lg text-slate-400 hover:text-white">Contact</button>
             </nav>
-            <div class="flex items-center gap-3">
-                <a href="mailto:2420829@iub.edu.bd" class="px-3.5 py-1.5 text-xs font-semibold bg-neonCyan/10 border border-neonCyan/40 text-neonCyan hover:bg-neonCyan hover:text-black rounded-lg transition">
-                    Email Me
-                </a>
-            </div>
+
+            <a href="mailto:2420829@iub.edu.bd" class="hidden sm:inline-block px-3.5 py-1.5 text-xs font-semibold bg-neonCyan/10 border border-neonCyan/40 text-neonCyan hover:bg-neonCyan hover:text-black rounded-lg transition">
+                Email Me
+            </a>
         </div>
     </header>
 
-    <!-- MAIN DASHBOARD -->
-    <section id="dashboard" class="max-w-6xl mx-auto px-6 py-12">
-        
-        <!-- Blinking Highlight Banner for Current Active Work -->
-        <div class="mb-10 p-5 rounded-2xl bg-cardDark border-2 blinking-banner flex flex-col md:flex-row items-center justify-between gap-4">
-            <div class="flex items-center gap-3">
-                <span class="relative flex h-4 w-4">
-                  <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-neonCyan opacity-75"></span>
-                  <span class="relative inline-flex rounded-full h-4 w-4 bg-neonCyan"></span>
-                </span>
-                <div>
-                    <h3 class="text-sm font-bold text-white uppercase tracking-wider">🔥 Currently Working On Active Ventures</h3>
-                    <p class="text-xs text-slate-300 mt-0.5">Actively building and researching at top-tier innovative tech platforms:</p>
-                </div>
-            </div>
-            <div class="flex flex-wrap gap-3">
-                <a href="https://csvians.com/" target="_blank" class="px-4 py-2 bg-slate-800 hover:bg-slate-700 border border-neonCyan/50 text-neonCyan rounded-xl text-xs font-bold transition flex items-center gap-1.5">
-                    🚀 CSVians (Co-Founder) <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
-                </a>
-                <a href="https://loremotion.com/" target="_blank" class="px-4 py-2 bg-slate-800 hover:bg-slate-700 border border-neonPurple/50 text-neonPurple rounded-xl text-xs font-bold transition flex items-center gap-1.5">
-                    💡 LoreMotion (R&D Co-Lead) <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
-                </a>
-            </div>
-        </div>
+    <main class="max-w-6xl mx-auto px-6 py-8">
 
-        <!-- Global Search Bar (Database Search) -->
+        <!-- GLOBAL AUTO-COMPLETE SEARCH BAR -->
         <div class="mb-8 relative">
-            <input type="text" id="globalSearch" placeholder="Search database entries (e.g. Smart Traffic, Pet Papa, C, Adamjee, Lovable)..." class="w-full px-4 py-3 pl-11 bg-cardDark border border-slate-700 rounded-2xl text-sm text-white focus:outline-none focus:border-neonCyan shadow-lg">
-            <i data-lucide="search" class="w-5 h-5 text-slate-400 absolute left-3.5 top-3.5"></i>
+            <div class="relative">
+                <input type="text" id="globalSearch" placeholder="Type to instant search anything (e.g. Smart Traffic, Pet Papa, C, Adamjee, IUB)..." class="w-full px-4 py-3 pl-11 bg-cardDark border border-slate-700 rounded-2xl text-sm text-white focus:outline-none focus:border-neonCyan shadow-lg">
+                <i data-lucide="search" class="w-5 h-5 text-slate-400 absolute left-3.5 top-3.5"></i>
+            </div>
+            <!-- Auto-complete instant dropdown -->
+            <div id="searchResults" class="hidden absolute top-full left-0 right-0 mt-2 bg-cardDark border border-slate-700 rounded-2xl shadow-2xl z-50 max-h-80 overflow-y-auto divide-y divide-slate-800"></div>
         </div>
 
-        <!-- Hero Intro with Profile Picture -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center bg-cardDark p-8 rounded-3xl border border-slate-800 shadow-xl">
-            <div class="flex flex-col items-center text-center">
-                <div class="w-36 h-36 rounded-full p-1 bg-gradient-to-tr from-neonCyan to-neonPurple mb-4 shadow-xl">
-                    <img src="https://i.postimg.cc/0Qz6z5sM/1.png" alt="Md. Tanjil Hasan Bappy" class="w-full h-full object-cover rounded-full">
+        <!-- 1. DASHBOARD PAGE -->
+        <div id="page-dashboard" class="page-content space-y-8">
+            
+            <!-- Blinking Work Status -->
+            <div class="p-5 rounded-2xl bg-cardDark border-2 blinking-banner flex flex-col md:flex-row items-center justify-between gap-4">
+                <div class="flex items-center gap-3">
+                    <span class="relative flex h-4 w-4">
+                      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-neonCyan opacity-75"></span>
+                      <span class="relative inline-flex rounded-full h-4 w-4 bg-neonCyan"></span>
+                    </span>
+                    <div>
+                        <h3 class="text-sm font-bold text-white uppercase tracking-wider">🔥 Currently Active Ventures</h3>
+                        <p class="text-xs text-slate-300 mt-0.5">Directing innovations and research:</p>
+                    </div>
                 </div>
-                <h1 class="text-xl font-bold text-white">Md. Tanjil Hasan Bappy</h1>
-                <p class="text-xs text-neonCyan font-semibold mt-1">4th Year Undergrad CSE Student @ IUB</p>
+                <div class="flex flex-wrap gap-3">
+                    <a href="https://csvians.com/" target="_blank" class="px-4 py-2 bg-slate-800 hover:bg-slate-700 border border-neonCyan/50 text-neonCyan rounded-xl text-xs font-bold transition flex items-center gap-1.5">
+                        🚀 CSVians (Co-Founder) <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+                    </a>
+                    <a href="https://loremotion.com/" target="_blank" class="px-4 py-2 bg-slate-800 hover:bg-slate-700 border border-neonPurple/50 text-neonPurple rounded-xl text-xs font-bold transition flex items-center gap-1.5">
+                        💡 LoreMotion (R&D Co-Lead) <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+                    </a>
+                </div>
             </div>
-            <div class="md:col-span-2 space-y-3 text-sm text-slate-300 leading-relaxed">
-                <p class="font-semibold text-white">"My name is Md. Tanjil Hasan Bappy."</p>
-                <p class="font-semibold text-white">"I am a CSE student."</p>
-                <p class="font-semibold text-white">"I love learning new things."</p>
-                <p class="text-slate-400 pt-2">
-                    As an undergraduate Computer Science and Engineering student at Independent University, Bangladesh (IUB), I love building web applications, especially creating interactive digital experiences with <b>Lovable</b>. Besides my studies, I am deeply passionate about teaching and mentoring students.
-                </p>
-                <div class="pt-2 flex flex-wrap gap-2">
-                    <span class="px-2.5 py-1 bg-slate-800 text-xs rounded-lg text-neonCyan font-mono">Founder: Ratio (Teacher Collaborative Network)</span>
-                    <span class="px-2.5 py-1 bg-slate-800 text-xs rounded-lg text-neonPurple font-mono">Main Instructor: Iconic Academy</span>
-                    <span class="px-2.5 py-1 bg-slate-800 text-xs rounded-lg text-slate-300 font-mono">Co-Ordinator: Spondon (Kachukhet Branch)</span>
+
+            <!-- Profile Summary Card -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center bg-cardDark p-8 rounded-3xl border border-slate-800 shadow-xl">
+                <div class="flex flex-col items-center text-center">
+                    <div class="w-36 h-36 rounded-full p-1 bg-gradient-to-tr from-neonCyan to-neonPurple mb-4 shadow-xl">
+                        <img src="https://i.postimg.cc/0Qz6z5sM/1.png" alt="Md. Tanjil Hasan Bappy" class="w-full h-full object-cover rounded-full">
+                    </div>
+                    <h1 class="text-xl font-bold text-white">Md. Tanjil Hasan Bappy</h1>
+                    <p class="text-xs text-neonCyan font-semibold mt-1">4th Year Undergrad CSE Student @ IUB</p>
+                </div>
+                <div class="md:col-span-2 space-y-3 text-sm text-slate-300 leading-relaxed">
+                    <p class="font-semibold text-white">"My name is Md. Tanjil Hasan Bappy."</p>
+                    <p class="font-semibold text-white">"I am a CSE student."</p>
+                    <p class="font-semibold text-white">"I love learning new things."</p>
+                    <p class="text-slate-400 pt-2">
+                        Undergraduate Computer Science and Engineering student at Independent University, Bangladesh (IUB). Passionate about web development using <b>Lovable</b>, software architectures, and mentoring students.
+                    </p>
+                    <div class="pt-2 flex flex-wrap gap-2">
+                        <span class="px-2.5 py-1 bg-slate-800 text-xs rounded-lg text-neonCyan font-mono">Founder: Ratio (Teacher Network)</span>
+                        <span class="px-2.5 py-1 bg-slate-800 text-xs rounded-lg text-neonPurple font-mono">Main Instructor: Iconic Academy</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Stats Summary -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <div onclick="switchTab('projects')" class="cursor-pointer p-6 rounded-2xl bg-cardDark border border-slate-800 hover:border-neonCyan transition">
+                    <div class="flex items-center justify-between">
+                        <h4 class="text-slate-400 text-xs uppercase">Projects Managed</h4>
+                        <i data-lucide="folder-git-2" class="w-5 h-5 text-neonCyan"></i>
+                    </div>
+                    <p id="stat-projects-count" class="text-2xl font-bold text-white mt-2">0</p>
+                </div>
+                <div onclick="switchTab('skills')" class="cursor-pointer p-6 rounded-2xl bg-cardDark border border-slate-800 hover:border-neonPurple transition">
+                    <div class="flex items-center justify-between">
+                        <h4 class="text-slate-400 text-xs uppercase">Skills Registered</h4>
+                        <i data-lucide="code" class="w-5 h-5 text-neonPurple"></i>
+                    </div>
+                    <p id="stat-skills-count" class="text-2xl font-bold text-white mt-2">0</p>
+                </div>
+                <div onclick="switchTab('education')" class="cursor-pointer p-6 rounded-2xl bg-cardDark border border-slate-800 hover:border-emerald-400 transition">
+                    <div class="flex items-center justify-between">
+                        <h4 class="text-slate-400 text-xs uppercase">Education Records</h4>
+                        <i data-lucide="graduation-cap" class="w-5 h-5 text-emerald-400"></i>
+                    </div>
+                    <p id="stat-education-count" class="text-2xl font-bold text-white mt-2">0</p>
                 </div>
             </div>
         </div>
-    </section>
 
-    <!-- MYSELF SECTION -->
-    <section id="myself" class="max-w-6xl mx-auto px-6 py-8">
-        <div class="p-8 rounded-3xl bg-cardDark border border-slate-800">
-            <h2 class="text-xl font-bold text-white mb-4 flex items-center gap-2"><i data-lucide="user" class="text-neonCyan"></i> MySelf & Teaching Journey</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm text-slate-300">
-                <div class="space-y-2">
-                    <p><b>Academic Background:</b> 4th Year CSE Undergraduate at Independent University, Bangladesh (IUB).</p>
-                    <p><b>Core Passion:</b> Website making, building futuristic tools, and software engineering.</p>
-                </div>
-                <div class="space-y-2">
-                    <p><b>Teaching & Leadership Roles:</b></p>
-                    <ul class="list-disc list-inside text-xs space-y-1 text-slate-400">
+        <!-- 2. MYSELF PAGE -->
+        <div id="page-myself" class="page-content hidden">
+            <div class="p-8 rounded-3xl bg-cardDark border border-slate-800 space-y-4">
+                <h2 class="text-xl font-bold text-white flex items-center gap-2"><i data-lucide="user" class="text-neonCyan"></i> MySelf & Journey</h2>
+                <div class="space-y-3 text-sm text-slate-300">
+                    <p>• <b>Academic Status:</b> Currently in 4th Year Undergraduate CSE at Independent University, Bangladesh (IUB).</p>
+                    <p>• <b>Passions:</b> Web development, prototyping interactive platforms with Lovable app, relational database modeling.</p>
+                    <p>• <b>Teaching & Leadership Positions:</b></p>
+                    <ul class="list-disc list-inside text-slate-400 text-xs space-y-1 pl-4">
                         <li>Instructor at Prime Cadet, Charupath, and Mirza Coaching</li>
                         <li>Main Instructor at Iconic Academy</li>
-                        <li>Co-Ordinator at Spondon (Kachukhet Branch)</li>
-                        <li>Founder of <b>Ratio</b> (A Teacher Collaborative Network)</li>
+                        <li>Branch Co-Ordinator at Spondon (Kachukhet Branch)</li>
+                        <li>Founder of Ratio (Teacher Collaborative Network)</li>
                     </ul>
                 </div>
             </div>
         </div>
-    </section>
 
-    <!-- EDUCATION SECTION WITH DYNAMIC DATABASE CRUD -->
-    <section id="education" class="max-w-6xl mx-auto px-6 py-8">
-        <div class="p-8 rounded-3xl bg-cardDark border border-slate-800">
-            <div class="flex items-center justify-between mb-6">
-                <div>
+        <!-- 3. EDUCATION PAGE -->
+        <div id="page-education" class="page-content hidden">
+            <div class="p-8 rounded-3xl bg-cardDark border border-slate-800">
+                <div class="flex items-center justify-between mb-6">
                     <h2 class="text-xl font-bold text-white flex items-center gap-2"><i data-lucide="graduation-cap" class="text-neonCyan"></i> Education & Courses</h2>
-                    <p class="text-xs text-slate-400 mt-1">Live synchronized from Firebase Database.</p>
+                    <button onclick="openModal('education')" class="px-3.5 py-2 bg-neonCyan text-black font-bold text-xs rounded-xl hover:bg-cyan-300 transition">+ Add Education</button>
                 </div>
-                <button onclick="openModal('education')" class="px-3.5 py-2 bg-neonCyan text-black font-bold text-xs rounded-xl hover:bg-cyan-300 transition">+ Add Education</button>
-            </div>
 
-            <div class="overflow-x-auto">
-                <table class="w-full text-left text-xs text-slate-300">
-                    <thead class="bg-slate-900 text-slate-400 uppercase font-mono">
-                        <tr><th class="p-3">Institution / Course</th><th class="p-3">Details</th><th class="p-3 text-right">Actions</th></tr>
-                    </thead>
-                    <tbody id="educationTable" class="divide-y divide-slate-800"></tbody>
-                </table>
-            </div>
-        </div>
-    </section>
-
-    <!-- SKILLS SECTION WITH DYNAMIC DATABASE CRUD -->
-    <section id="skills" class="max-w-6xl mx-auto px-6 py-8">
-        <div class="p-8 rounded-3xl bg-cardDark border border-slate-800">
-            <div class="flex items-center justify-between mb-6">
-                <div>
-                    <h2 class="text-xl font-bold text-white flex items-center gap-2"><i data-lucide="code" class="text-neonCyan"></i> Skills & Expertise</h2>
-                    <p class="text-xs text-slate-400 mt-1">Live synchronized from Firebase Database.</p>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-xs text-slate-300">
+                        <thead class="bg-slate-900 text-slate-400 uppercase font-mono">
+                            <tr><th class="p-3">Title / Institution</th><th class="p-3">Details / Course</th><th class="p-3 text-right">Actions</th></tr>
+                        </thead>
+                        <tbody id="educationTable" class="divide-y divide-slate-800"></tbody>
+                    </table>
                 </div>
-                <button onclick="openModal('skills')" class="px-3.5 py-2 bg-neonCyan text-black font-bold text-xs rounded-xl hover:bg-cyan-300 transition">+ Add Skill</button>
-            </div>
-
-            <div class="overflow-x-auto">
-                <table class="w-full text-left text-xs text-slate-300">
-                    <thead class="bg-slate-900 text-slate-400 uppercase font-mono">
-                        <tr><th class="p-3">Skill Name</th><th class="p-3">Proficiency / Details</th><th class="p-3 text-right">Actions</th></tr>
-                    </thead>
-                    <tbody id="skillsTable" class="divide-y divide-slate-800"></tbody>
-                </table>
             </div>
         </div>
-    </section>
 
-    <!-- PROJECTS SECTION WITH DYNAMIC DATABASE CRUD & ANIMATIONS -->
-    <section id="projects" class="max-w-6xl mx-auto px-6 py-8">
-        <div class="p-8 rounded-3xl bg-cardDark border border-slate-800">
-            <div class="flex items-center justify-between mb-6">
-                <div>
-                    <h2 class="text-xl font-bold text-white flex items-center gap-2"><i data-lucide="folder-git-2" class="text-neonCyan"></i> Projects & Platforms</h2>
-                    <p class="text-xs text-slate-400 mt-1">Live synchronized from Firebase Database (Supports Edit/Delete for all projects).</p>
+        <!-- 4. SKILLS PAGE -->
+        <div id="page-skills" class="page-content hidden">
+            <div class="p-8 rounded-3xl bg-cardDark border border-slate-800">
+                <div class="flex items-center justify-between mb-6">
+                    <h2 class="text-xl font-bold text-white flex items-center gap-2"><i data-lucide="code" class="text-neonCyan"></i> Skills & Technical Expertise</h2>
+                    <button onclick="openModal('skills')" class="px-3.5 py-2 bg-neonCyan text-black font-bold text-xs rounded-xl hover:bg-cyan-300 transition">+ Add Skill</button>
                 </div>
-                <button onclick="openModal('projects')" class="px-3.5 py-2 bg-neonCyan text-black font-bold text-xs rounded-xl hover:bg-cyan-300 transition">+ Add Project</button>
-            </div>
 
-            <!-- Dynamic Project Cards Container -->
-            <div id="projectsGrid" class="grid grid-cols-1 md:grid-cols-2 gap-6"></div>
-        </div>
-    </section>
-
-    <!-- CONTACT SECTION -->
-    <section id="contact" class="max-w-6xl mx-auto px-6 py-8">
-        <div class="p-8 rounded-3xl bg-cardDark border border-slate-800 text-center">
-            <h2 class="text-xl font-bold text-white mb-4">Connect With Me</h2>
-            <div class="flex flex-wrap justify-center gap-4 text-sm">
-                <a href="mailto:2420829@iub.edu.bd" class="px-4 py-2 bg-slate-900 border border-slate-700 rounded-xl flex items-center gap-2 hover:border-neonCyan transition">
-                    <i data-lucide="mail" class="w-4 h-4 text-neonCyan"></i> 2420829@iub.edu.bd
-                </a>
-                <a href="https://wa.me/8801316372389" target="_blank" class="px-4 py-2 bg-slate-900 border border-slate-700 rounded-xl flex items-center gap-2 hover:border-emerald-400 transition">
-                    <i data-lucide="phone" class="w-4 h-4 text-emerald-400"></i> +8801316372389
-                </a>
-                <a href="https://tanjilhasancv.ai.studio" target="_blank" class="px-4 py-2 bg-slate-900 border border-slate-700 rounded-xl flex items-center gap-2 hover:border-neonPurple transition">
-                    <i data-lucide="globe" class="w-4 h-4 text-neonPurple"></i> tanjilhasancv.ai.studio
-                </a>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-xs text-slate-300">
+                        <thead class="bg-slate-900 text-slate-400 uppercase font-mono">
+                            <tr><th class="p-3">Skill Name</th><th class="p-3">Proficiency / Details</th><th class="p-3 text-right">Actions</th></tr>
+                        </thead>
+                        <tbody id="skillsTable" class="divide-y divide-slate-800"></tbody>
+                    </table>
+                </div>
             </div>
         </div>
-    </section>
 
-    <!-- Modal for CRUD (Add / Edit) -->
+        <!-- 5. PROJECTS PAGE -->
+        <div id="page-projects" class="page-content hidden">
+            <div class="p-8 rounded-3xl bg-cardDark border border-slate-800">
+                <div class="flex items-center justify-between mb-6">
+                    <h2 class="text-xl font-bold text-white flex items-center gap-2"><i data-lucide="folder-git-2" class="text-neonCyan"></i> Software Projects</h2>
+                    <button onclick="openModal('projects')" class="px-3.5 py-2 bg-neonCyan text-black font-bold text-xs rounded-xl hover:bg-cyan-300 transition">+ Add Project</button>
+                </div>
+
+                <div id="projectsGrid" class="grid grid-cols-1 md:grid-cols-2 gap-6"></div>
+            </div>
+        </div>
+
+        <!-- 6. CONTACT PAGE -->
+        <div id="page-contact" class="page-content hidden">
+            <div class="p-8 rounded-3xl bg-cardDark border border-slate-800 text-center space-y-6">
+                <h2 class="text-xl font-bold text-white">Contact & Profiles</h2>
+                <div class="flex flex-wrap justify-center gap-4 text-sm">
+                    <a href="mailto:2420829@iub.edu.bd" class="px-4 py-3 bg-slate-900 border border-slate-700 rounded-xl flex items-center gap-2 hover:border-neonCyan transition">
+                        <i data-lucide="mail" class="w-4 h-4 text-neonCyan"></i> 2420829@iub.edu.bd
+                    </a>
+                    <a href="https://wa.me/8801316372389" target="_blank" class="px-4 py-3 bg-slate-900 border border-slate-700 rounded-xl flex items-center gap-2 hover:border-emerald-400 transition">
+                        <i data-lucide="phone" class="w-4 h-4 text-emerald-400"></i> +8801316372389
+                    </a>
+                    <a href="https://tanjilhasancv.ai.studio" target="_blank" class="px-4 py-3 bg-slate-900 border border-slate-700 rounded-xl flex items-center gap-2 hover:border-neonPurple transition">
+                        <i data-lucide="globe" class="w-4 h-4 text-neonPurple"></i> tanjilhasancv.ai.studio
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Modal Form for Add / Edit -->
     <div id="crudModal" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm hidden flex items-center justify-center p-4">
         <div class="bg-cardDark border border-slate-700 w-full max-w-md p-6 rounded-3xl shadow-2xl">
             <h3 id="modalTitle" class="text-lg font-bold text-white mb-4">Add Entry</h3>
@@ -248,7 +262,7 @@
                 </div>
                 <div class="flex justify-end gap-2 pt-2">
                     <button type="button" onclick="closeModal()" class="px-4 py-2 bg-slate-800 text-slate-300 text-xs rounded-xl hover:bg-slate-700">Cancel</button>
-                    <button type="submit" class="px-4 py-2 bg-neonCyan text-black font-bold text-xs rounded-xl hover:bg-cyan-300">Save to DB</button>
+                    <button type="submit" class="px-4 py-2 bg-neonCyan text-black font-bold text-xs rounded-xl hover:bg-cyan-300">Save to Firebase</button>
                 </div>
             </form>
         </div>
@@ -259,8 +273,23 @@
         <p>© 2026 Md. Tanjil Hasan Bappy · Independent University, Bangladesh (IUB)</p>
     </footer>
 
-    <!-- Firebase & App Script -->
     <script type="module" src="app.js"></script>
-    <script> lucide.createIcons(); </script>
+    <script>
+        function switchTab(tabId) {
+            document.querySelectorAll('.page-content').forEach(el => el.classList.add('hidden'));
+            document.querySelectorAll('.nav-btn').forEach(el => {
+                el.classList.remove('text-neonCyan', 'bg-slate-800');
+                el.classList.add('text-slate-400');
+            });
+
+            document.getElementById(`page-${tabId}`).classList.remove('hidden');
+            const activeNav = document.getElementById(`nav-${tabId}`);
+            if (activeNav) {
+                activeNav.classList.remove('text-slate-400');
+                activeNav.classList.add('text-neonCyan', 'bg-slate-800');
+            }
+        }
+        window.switchTab = switchTab;
+    </script>
 </body>
 </html>
