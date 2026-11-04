@@ -1,8 +1,6 @@
-// firebase-config.js
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
 import { getFirestore } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
-// Firebase Config Parameters
 const firebaseConfig = {
   apiKey: "AIzaSyClYhcNTHWLEFwyxbAWsHILX59n6_HM_gA",
   authDomain: "tanjil-profile-309.firebaseapp.com",
@@ -13,6 +11,5 @@ const firebaseConfig = {
   measurementId: "G-C4DKZFJPWK"
 };
 
-// Initialize Firebase App & Firestore Database
 const app = initializeApp(firebaseConfig);
 export const db = getFirestore(app);
