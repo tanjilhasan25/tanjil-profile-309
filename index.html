@@ -100,9 +100,9 @@
             </div>
         </div>
 
-        <!-- Global Search Bar -->
+        <!-- Global Search Bar (Database Search) -->
         <div class="mb-8 relative">
-            <input type="text" id="globalSearch" placeholder="Search anything about me (skills, projects, education)..." class="w-full px-4 py-3 pl-11 bg-cardDark border border-slate-700 rounded-2xl text-sm text-white focus:outline-none focus:border-neonCyan shadow-lg">
+            <input type="text" id="globalSearch" placeholder="Search database entries (e.g. Smart Traffic, Pet Papa, C, Adamjee, Lovable)..." class="w-full px-4 py-3 pl-11 bg-cardDark border border-slate-700 rounded-2xl text-sm text-white focus:outline-none focus:border-neonCyan shadow-lg">
             <i data-lucide="search" class="w-5 h-5 text-slate-400 absolute left-3.5 top-3.5"></i>
         </div>
 
@@ -153,32 +153,21 @@
         </div>
     </section>
 
-    <!-- EDUCATION SECTION WITH CRUD -->
+    <!-- EDUCATION SECTION WITH DYNAMIC DATABASE CRUD -->
     <section id="education" class="max-w-6xl mx-auto px-6 py-8">
         <div class="p-8 rounded-3xl bg-cardDark border border-slate-800">
             <div class="flex items-center justify-between mb-6">
-                <h2 class="text-xl font-bold text-white flex items-center gap-2"><i data-lucide="graduation-cap" class="text-neonCyan"></i> Education & Courses</h2>
-                <button onclick="openModal('education')" class="px-3 py-1.5 bg-neonCyan text-black font-bold text-xs rounded-xl hover:bg-cyan-300 transition">+ Add Education</button>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-                <div class="p-4 rounded-xl bg-slate-900 border border-slate-800">
-                    <h4 class="font-bold text-white text-sm">🏫 Schooling</h4>
-                    <p class="text-xs text-slate-400 mt-1">• JSC from Adamjee Cantonment School, Dhaka</p>
-                    <p class="text-xs text-slate-400">• SSC & HSC from Ispahani Public School and College, Comilla</p>
+                <div>
+                    <h2 class="text-xl font-bold text-white flex items-center gap-2"><i data-lucide="graduation-cap" class="text-neonCyan"></i> Education & Courses</h2>
+                    <p class="text-xs text-slate-400 mt-1">Live synchronized from Firebase Database.</p>
                 </div>
-                <div class="p-4 rounded-xl bg-slate-900 border border-slate-800">
-                    <h4 class="font-bold text-white text-sm">🎓 University & Courses</h4>
-                    <p class="text-xs text-slate-400 mt-1">• CSE Undergraduate at Independent University, Bangladesh (IUB)</p>
-                    <p class="text-xs text-slate-400">• Non-CSE / Foundation Courses: Sociology, BDS Bangladesh 1971, etc.</p>
-                </div>
+                <button onclick="openModal('education')" class="px-3.5 py-2 bg-neonCyan text-black font-bold text-xs rounded-xl hover:bg-cyan-300 transition">+ Add Education</button>
             </div>
 
-            <!-- Dynamic Education Table from Database -->
             <div class="overflow-x-auto">
                 <table class="w-full text-left text-xs text-slate-300">
                     <thead class="bg-slate-900 text-slate-400 uppercase font-mono">
-                        <tr><th class="p-3">Title / Institution</th><th class="p-3">Details / Course</th><th class="p-3 text-right">Actions</th></tr>
+                        <tr><th class="p-3">Institution / Course</th><th class="p-3">Details</th><th class="p-3 text-right">Actions</th></tr>
                     </thead>
                     <tbody id="educationTable" class="divide-y divide-slate-800"></tbody>
                 </table>
@@ -186,30 +175,21 @@
         </div>
     </section>
 
-    <!-- SKILLS SECTION WITH CRUD -->
+    <!-- SKILLS SECTION WITH DYNAMIC DATABASE CRUD -->
     <section id="skills" class="max-w-6xl mx-auto px-6 py-8">
         <div class="p-8 rounded-3xl bg-cardDark border border-slate-800">
             <div class="flex items-center justify-between mb-6">
-                <h2 class="text-xl font-bold text-white flex items-center gap-2"><i data-lucide="code" class="text-neonCyan"></i> Skills & Expertise</h2>
-                <button onclick="openModal('skills')" class="px-3 py-1.5 bg-neonCyan text-black font-bold text-xs rounded-xl hover:bg-cyan-300 transition">+ Add Skill</button>
+                <div>
+                    <h2 class="text-xl font-bold text-white flex items-center gap-2"><i data-lucide="code" class="text-neonCyan"></i> Skills & Expertise</h2>
+                    <p class="text-xs text-slate-400 mt-1">Live synchronized from Firebase Database.</p>
+                </div>
+                <button onclick="openModal('skills')" class="px-3.5 py-2 bg-neonCyan text-black font-bold text-xs rounded-xl hover:bg-cyan-300 transition">+ Add Skill</button>
             </div>
 
-            <div class="flex flex-wrap gap-2 mb-6">
-                <span class="px-3 py-1.5 bg-slate-900 border border-slate-700 text-xs rounded-xl text-neonCyan font-mono">Basic Programming</span>
-                <span class="px-3 py-1.5 bg-slate-900 border border-slate-700 text-xs rounded-xl text-neonCyan font-mono">C Language</span>
-                <span class="px-3 py-1.5 bg-slate-900 border border-slate-700 text-xs rounded-xl text-neonCyan font-mono">HTML & CSS</span>
-                <span class="px-3 py-1.5 bg-slate-900 border border-slate-700 text-xs rounded-xl text-neonCyan font-mono">Java & Python</span>
-                <span class="px-3 py-1.5 bg-slate-900 border border-slate-700 text-xs rounded-xl text-neonCyan font-mono">Web Developer</span>
-                <span class="px-3 py-1.5 bg-slate-900 border border-slate-700 text-xs rounded-xl text-neonCyan font-mono">Advanced Level Canva</span>
-                <span class="px-3 py-1.5 bg-slate-900 border border-slate-700 text-xs rounded-xl text-neonCyan font-mono">Lovable Prototyping</span>
-                <span class="px-3 py-1.5 bg-slate-900 border border-slate-700 text-xs rounded-xl text-neonPurple font-mono">Teaching & Mentorship</span>
-            </div>
-
-            <!-- Dynamic Skills Table -->
             <div class="overflow-x-auto">
                 <table class="w-full text-left text-xs text-slate-300">
                     <thead class="bg-slate-900 text-slate-400 uppercase font-mono">
-                        <tr><th class="p-3">Skill Name</th><th class="p-3">Proficiency / Description</th><th class="p-3 text-right">Actions</th></tr>
+                        <tr><th class="p-3">Skill Name</th><th class="p-3">Proficiency / Details</th><th class="p-3 text-right">Actions</th></tr>
                     </thead>
                     <tbody id="skillsTable" class="divide-y divide-slate-800"></tbody>
                 </table>
@@ -217,65 +197,19 @@
         </div>
     </section>
 
-    <!-- PROJECTS SECTION WITH ANIMATIONS & CRUD -->
+    <!-- PROJECTS SECTION WITH DYNAMIC DATABASE CRUD & ANIMATIONS -->
     <section id="projects" class="max-w-6xl mx-auto px-6 py-8">
         <div class="p-8 rounded-3xl bg-cardDark border border-slate-800">
             <div class="flex items-center justify-between mb-6">
-                <h2 class="text-xl font-bold text-white flex items-center gap-2"><i data-lucide="folder-git-2" class="text-neonCyan"></i> Projects & Platforms</h2>
-                <button onclick="openModal('projects')" class="px-3 py-1.5 bg-neonCyan text-black font-bold text-xs rounded-xl hover:bg-cyan-300 transition">+ Add Project</button>
+                <div>
+                    <h2 class="text-xl font-bold text-white flex items-center gap-2"><i data-lucide="folder-git-2" class="text-neonCyan"></i> Projects & Platforms</h2>
+                    <p class="text-xs text-slate-400 mt-1">Live synchronized from Firebase Database (Supports Edit/Delete for all projects).</p>
+                </div>
+                <button onclick="openModal('projects')" class="px-3.5 py-2 bg-neonCyan text-black font-bold text-xs rounded-xl hover:bg-cyan-300 transition">+ Add Project</button>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-                <!-- Pet Papa with Cute Pet Animation -->
-                <div class="p-6 rounded-2xl bg-slate-900 border border-slate-800 relative overflow-hidden">
-                    <div class="flex items-start justify-between mb-2">
-                        <h4 class="text-lg font-bold text-white">Pet Papa</h4>
-                        <span class="text-3xl pet-bounce">🐱</span>
-                    </div>
-                    <p class="text-xs text-slate-300 mb-3">A sweet mobile application for pet lovers with automated nutrition tracking, vet appointment scheduling, and health telemetry.</p>
-                    <span class="px-2.5 py-1 bg-cyberDark text-neonCyan text-[10px] rounded font-mono">Mobile App · Health</span>
-                </div>
-
-                <!-- Smart Traffic with Moving Sign Animation -->
-                <div class="p-6 rounded-2xl bg-slate-900 border border-slate-800 relative overflow-hidden">
-                    <div class="flex items-start justify-between mb-2">
-                        <h4 class="text-lg font-bold text-white">Smart Traffic Management</h4>
-                        <span class="text-2xl traffic-anim">🚸</span>
-                    </div>
-                    <p class="text-xs text-slate-300 mb-3">An intelligent 4-way intersection coordinator featuring vehicle queue prediction and emergency green-wave overrides.</p>
-                    <span class="px-2.5 py-1 bg-cyberDark text-neonCyan text-[10px] rounded font-mono">AI & Vision · IoT</span>
-                </div>
-
-                <!-- FocusFlow -->
-                <div class="p-6 rounded-2xl bg-slate-900 border border-slate-800">
-                    <div class="flex items-start justify-between mb-2">
-                        <h4 class="text-lg font-bold text-white">FocusFlow</h4>
-                        <span class="text-2xl animate-pulse">🛸</span>
-                    </div>
-                    <p class="text-xs text-slate-300 mb-3">Futuristic browser extension and workspace console with Pomodoro timers and distraction shields.</p>
-                    <span class="px-2.5 py-1 bg-cyberDark text-neonCyan text-[10px] rounded font-mono">Extension · Productivity</span>
-                </div>
-
-                <!-- Ratio & Iconic Academy Hub -->
-                <div class="p-6 rounded-2xl bg-slate-900 border border-slate-800">
-                    <div class="flex items-start justify-between mb-2">
-                        <h4 class="text-lg font-bold text-white">Ratio & Iconic Academy Hub</h4>
-                        <span class="text-2xl">🎓</span>
-                    </div>
-                    <p class="text-xs text-slate-300 mb-3">Educational portals empowering students across Bangladesh with bootcamps and structured notes.</p>
-                    <span class="px-2.5 py-1 bg-cyberDark text-neonCyan text-[10px] rounded font-mono">EdTech · Platform</span>
-                </div>
-            </div>
-
-            <!-- Dynamic Projects Table -->
-            <div class="overflow-x-auto">
-                <table class="w-full text-left text-xs text-slate-300">
-                    <thead class="bg-slate-900 text-slate-400 uppercase font-mono">
-                        <tr><th class="p-3">Project Title</th><th class="p-3">Description</th><th class="p-3 text-right">Actions</th></tr>
-                    </thead>
-                    <tbody id="projectsTable" class="divide-y divide-slate-800"></tbody>
-                </table>
-            </div>
+            <!-- Dynamic Project Cards Container -->
+            <div id="projectsGrid" class="grid grid-cols-1 md:grid-cols-2 gap-6"></div>
         </div>
     </section>
 
@@ -310,7 +244,7 @@
                 </div>
                 <div>
                     <label class="block text-xs font-medium text-slate-400 mb-1">Description / Details</label>
-                    <input type="text" id="modalDescInput" required class="w-full px-3 py-2 bg-slate-900 border border-slate-700 rounded-xl text-xs text-white focus:border-neonCyan">
+                    <textarea id="modalDescInput" rows="3" required class="w-full px-3 py-2 bg-slate-900 border border-slate-700 rounded-xl text-xs text-white focus:border-neonCyan"></textarea>
                 </div>
                 <div class="flex justify-end gap-2 pt-2">
                     <button type="button" onclick="closeModal()" class="px-4 py-2 bg-slate-800 text-slate-300 text-xs rounded-xl hover:bg-slate-700">Cancel</button>
