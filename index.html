@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Md. Tanjil Hasan Bappy · CSE Portfolio</title>
+    <title>Md. Tanjil Hasan Bappy · Profile Page with API</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -26,24 +26,16 @@
 
     <style>
         body { font-family: 'Plus Jakarta Sans', sans-serif; }
-        
         @keyframes petJump {
             0%, 100% { transform: translateY(0) scale(1); }
             50% { transform: translateY(-10px) scale(1.05); }
         }
         .pet-bounce { animation: petJump 1.8s infinite ease-in-out; }
-
         @keyframes blinkGlow {
             0%, 100% { box-shadow: 0 0 10px rgba(0, 242, 254, 0.4); border-color: #00f2fe; }
             50% { box-shadow: 0 0 25px rgba(157, 78, 221, 0.8); border-color: #9d4edd; }
         }
         .blinking-banner { animation: blinkGlow 2s infinite ease-in-out; }
-
-        @keyframes signFloat {
-            0%, 100% { transform: rotate(-3deg); }
-            50% { transform: rotate(3deg); }
-        }
-        .traffic-anim { animation: signFloat 2s infinite ease-in-out; }
     </style>
 </head>
 <body class="bg-cyberDark text-slate-100 min-h-screen selection:bg-neonCyan selection:text-black">
@@ -55,7 +47,6 @@
                 TANJIL.BAPPY
             </button>
 
-            <!-- Page Tabs -->
             <nav class="flex gap-2 sm:gap-4 text-xs sm:text-sm font-medium">
                 <button onclick="switchTab('dashboard')" id="nav-dashboard" class="nav-btn px-3 py-1.5 rounded-lg text-neonCyan bg-slate-800">Dashboard</button>
                 <button onclick="switchTab('myself')" id="nav-myself" class="nav-btn px-3 py-1.5 rounded-lg text-slate-400 hover:text-white">MySelf</button>
@@ -73,20 +64,17 @@
 
     <main class="max-w-6xl mx-auto px-6 py-8">
 
-        <!-- GLOBAL AUTO-COMPLETE SEARCH BAR -->
+        <!-- Search Bar with Instant Auto-complete -->
         <div class="mb-8 relative">
             <div class="relative">
-                <input type="text" id="globalSearch" placeholder="Type to instant search anything (e.g. Smart Traffic, Pet Papa, C, Adamjee, IUB)..." class="w-full px-4 py-3 pl-11 bg-cardDark border border-slate-700 rounded-2xl text-sm text-white focus:outline-none focus:border-neonCyan shadow-lg">
+                <input type="text" id="globalSearch" placeholder="Type to instant search database records..." class="w-full px-4 py-3 pl-11 bg-cardDark border border-slate-700 rounded-2xl text-sm text-white focus:outline-none focus:border-neonCyan shadow-lg">
                 <i data-lucide="search" class="w-5 h-5 text-slate-400 absolute left-3.5 top-3.5"></i>
             </div>
-            <!-- Auto-complete instant dropdown -->
             <div id="searchResults" class="hidden absolute top-full left-0 right-0 mt-2 bg-cardDark border border-slate-700 rounded-2xl shadow-2xl z-50 max-h-80 overflow-y-auto divide-y divide-slate-800"></div>
         </div>
 
-        <!-- 1. DASHBOARD PAGE -->
+        <!-- 1. DASHBOARD -->
         <div id="page-dashboard" class="page-content space-y-8">
-            
-            <!-- Blinking Work Status -->
             <div class="p-5 rounded-2xl bg-cardDark border-2 blinking-banner flex flex-col md:flex-row items-center justify-between gap-4">
                 <div class="flex items-center gap-3">
                     <span class="relative flex h-4 w-4">
@@ -108,7 +96,6 @@
                 </div>
             </div>
 
-            <!-- Profile Summary Card -->
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center bg-cardDark p-8 rounded-3xl border border-slate-800 shadow-xl">
                 <div class="flex flex-col items-center text-center">
                     <div class="w-36 h-36 rounded-full p-1 bg-gradient-to-tr from-neonCyan to-neonPurple mb-4 shadow-xl">
@@ -122,67 +109,36 @@
                     <p class="font-semibold text-white">"I am a CSE student."</p>
                     <p class="font-semibold text-white">"I love learning new things."</p>
                     <p class="text-slate-400 pt-2">
-                        Undergraduate Computer Science and Engineering student at Independent University, Bangladesh (IUB). Passionate about web development using <b>Lovable</b>, software architectures, and mentoring students.
+                        Undergraduate Computer Science and Engineering student at Independent University, Bangladesh (IUB). Passionate about web development using <b>Lovable</b>, REST APIs, and database architectures.
                     </p>
-                    <div class="pt-2 flex flex-wrap gap-2">
-                        <span class="px-2.5 py-1 bg-slate-800 text-xs rounded-lg text-neonCyan font-mono">Founder: Ratio (Teacher Network)</span>
-                        <span class="px-2.5 py-1 bg-slate-800 text-xs rounded-lg text-neonPurple font-mono">Main Instructor: Iconic Academy</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Quick Stats Summary -->
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                <div onclick="switchTab('projects')" class="cursor-pointer p-6 rounded-2xl bg-cardDark border border-slate-800 hover:border-neonCyan transition">
-                    <div class="flex items-center justify-between">
-                        <h4 class="text-slate-400 text-xs uppercase">Projects Managed</h4>
-                        <i data-lucide="folder-git-2" class="w-5 h-5 text-neonCyan"></i>
-                    </div>
-                    <p id="stat-projects-count" class="text-2xl font-bold text-white mt-2">0</p>
-                </div>
-                <div onclick="switchTab('skills')" class="cursor-pointer p-6 rounded-2xl bg-cardDark border border-slate-800 hover:border-neonPurple transition">
-                    <div class="flex items-center justify-between">
-                        <h4 class="text-slate-400 text-xs uppercase">Skills Registered</h4>
-                        <i data-lucide="code" class="w-5 h-5 text-neonPurple"></i>
-                    </div>
-                    <p id="stat-skills-count" class="text-2xl font-bold text-white mt-2">0</p>
-                </div>
-                <div onclick="switchTab('education')" class="cursor-pointer p-6 rounded-2xl bg-cardDark border border-slate-800 hover:border-emerald-400 transition">
-                    <div class="flex items-center justify-between">
-                        <h4 class="text-slate-400 text-xs uppercase">Education Records</h4>
-                        <i data-lucide="graduation-cap" class="w-5 h-5 text-emerald-400"></i>
-                    </div>
-                    <p id="stat-education-count" class="text-2xl font-bold text-white mt-2">0</p>
                 </div>
             </div>
         </div>
 
-        <!-- 2. MYSELF PAGE -->
+        <!-- 2. MYSELF -->
         <div id="page-myself" class="page-content hidden">
             <div class="p-8 rounded-3xl bg-cardDark border border-slate-800 space-y-4">
-                <h2 class="text-xl font-bold text-white flex items-center gap-2"><i data-lucide="user" class="text-neonCyan"></i> MySelf & Journey</h2>
+                <h2 class="text-xl font-bold text-white flex items-center gap-2"><i data-lucide="user" class="text-neonCyan"></i> MySelf & Teaching Journey</h2>
                 <div class="space-y-3 text-sm text-slate-300">
-                    <p>• <b>Academic Status:</b> Currently in 4th Year Undergraduate CSE at Independent University, Bangladesh (IUB).</p>
-                    <p>• <b>Passions:</b> Web development, prototyping interactive platforms with Lovable app, relational database modeling.</p>
+                    <p>• <b>Academic Status:</b> 4th Year Undergraduate CSE at Independent University, Bangladesh (IUB).</p>
                     <p>• <b>Teaching & Leadership Positions:</b></p>
                     <ul class="list-disc list-inside text-slate-400 text-xs space-y-1 pl-4">
                         <li>Instructor at Prime Cadet, Charupath, and Mirza Coaching</li>
                         <li>Main Instructor at Iconic Academy</li>
                         <li>Branch Co-Ordinator at Spondon (Kachukhet Branch)</li>
-                        <li>Founder of Ratio (Teacher Collaborative Network)</li>
+                        <li>Founder of Ratio (Teacher Network)</li>
                     </ul>
                 </div>
             </div>
         </div>
 
-        <!-- 3. EDUCATION PAGE -->
+        <!-- 3. EDUCATION -->
         <div id="page-education" class="page-content hidden">
             <div class="p-8 rounded-3xl bg-cardDark border border-slate-800">
                 <div class="flex items-center justify-between mb-6">
                     <h2 class="text-xl font-bold text-white flex items-center gap-2"><i data-lucide="graduation-cap" class="text-neonCyan"></i> Education & Courses</h2>
                     <button onclick="openModal('education')" class="px-3.5 py-2 bg-neonCyan text-black font-bold text-xs rounded-xl hover:bg-cyan-300 transition">+ Add Education</button>
                 </div>
-
                 <div class="overflow-x-auto">
                     <table class="w-full text-left text-xs text-slate-300">
                         <thead class="bg-slate-900 text-slate-400 uppercase font-mono">
@@ -194,14 +150,13 @@
             </div>
         </div>
 
-        <!-- 4. SKILLS PAGE -->
+        <!-- 4. SKILLS -->
         <div id="page-skills" class="page-content hidden">
             <div class="p-8 rounded-3xl bg-cardDark border border-slate-800">
                 <div class="flex items-center justify-between mb-6">
                     <h2 class="text-xl font-bold text-white flex items-center gap-2"><i data-lucide="code" class="text-neonCyan"></i> Skills & Technical Expertise</h2>
                     <button onclick="openModal('skills')" class="px-3.5 py-2 bg-neonCyan text-black font-bold text-xs rounded-xl hover:bg-cyan-300 transition">+ Add Skill</button>
                 </div>
-
                 <div class="overflow-x-auto">
                     <table class="w-full text-left text-xs text-slate-300">
                         <thead class="bg-slate-900 text-slate-400 uppercase font-mono">
@@ -213,19 +168,18 @@
             </div>
         </div>
 
-        <!-- 5. PROJECTS PAGE -->
+        <!-- 5. PROJECTS -->
         <div id="page-projects" class="page-content hidden">
             <div class="p-8 rounded-3xl bg-cardDark border border-slate-800">
                 <div class="flex items-center justify-between mb-6">
                     <h2 class="text-xl font-bold text-white flex items-center gap-2"><i data-lucide="folder-git-2" class="text-neonCyan"></i> Software Projects</h2>
                     <button onclick="openModal('projects')" class="px-3.5 py-2 bg-neonCyan text-black font-bold text-xs rounded-xl hover:bg-cyan-300 transition">+ Add Project</button>
                 </div>
-
                 <div id="projectsGrid" class="grid grid-cols-1 md:grid-cols-2 gap-6"></div>
             </div>
         </div>
 
-        <!-- 6. CONTACT PAGE -->
+        <!-- 6. CONTACT -->
         <div id="page-contact" class="page-content hidden">
             <div class="p-8 rounded-3xl bg-cardDark border border-slate-800 text-center space-y-6">
                 <h2 class="text-xl font-bold text-white">Contact & Profiles</h2>
@@ -245,7 +199,7 @@
 
     </main>
 
-    <!-- Modal Form for Add / Edit -->
+    <!-- Modal Form -->
     <div id="crudModal" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm hidden flex items-center justify-center p-4">
         <div class="bg-cardDark border border-slate-700 w-full max-w-md p-6 rounded-3xl shadow-2xl">
             <h3 id="modalTitle" class="text-lg font-bold text-white mb-4">Add Entry</h3>
@@ -262,13 +216,12 @@
                 </div>
                 <div class="flex justify-end gap-2 pt-2">
                     <button type="button" onclick="closeModal()" class="px-4 py-2 bg-slate-800 text-slate-300 text-xs rounded-xl hover:bg-slate-700">Cancel</button>
-                    <button type="submit" class="px-4 py-2 bg-neonCyan text-black font-bold text-xs rounded-xl hover:bg-cyan-300">Save to Firebase</button>
+                    <button type="submit" class="px-4 py-2 bg-neonCyan text-black font-bold text-xs rounded-xl hover:bg-cyan-300">Save via API</button>
                 </div>
             </form>
         </div>
     </div>
 
-    <!-- Footer -->
     <footer class="text-center py-8 text-xs text-slate-500 border-t border-slate-800">
         <p>© 2026 Md. Tanjil Hasan Bappy · Independent University, Bangladesh (IUB)</p>
     </footer>
@@ -281,7 +234,6 @@
                 el.classList.remove('text-neonCyan', 'bg-slate-800');
                 el.classList.add('text-slate-400');
             });
-
             document.getElementById(`page-${tabId}`).classList.remove('hidden');
             const activeNav = document.getElementById(`nav-${tabId}`);
             if (activeNav) {
